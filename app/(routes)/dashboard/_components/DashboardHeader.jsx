@@ -4,12 +4,12 @@ import React from 'react'
 function DashboardHeader() {
   return (
     <div className='p-5 shadow-sm border-b flex justify-between items-center'>
-        <div>
-            Dashboard
-        </div>
-        <div>
-            <UserButton/>
-        </div>
+      <div>
+        Expense Tracker
+      </div>
+      <div>
+        <UserButton />
+      </div>
     </div>
   )
 }

@@ -30,7 +30,10 @@ function Expense() {
 
     return (
         <div className='m-10'>
-            <ExpensesListTable expensesList={expensesList} refreshData={() => getAllExpenses()} />
+            {expensesList.length > 0 ? <ExpensesListTable expensesList={expensesList} refreshData={() => getAllExpenses()} /> : <h1 className='text-xl font-semibold text-gray-600 text-center'>
+                No expenses found. Start adding some!
+            </h1>}
+
         </div>
     )
 }
