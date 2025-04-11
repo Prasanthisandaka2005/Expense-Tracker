@@ -61,12 +61,11 @@ export default function Page() {
               </a>
 
               <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                Welcome to Squid 🦑
+                Hey There, Welcome 👋
               </h1>
 
               <p className="mt-4 leading-relaxed text-gray-500">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-                quibusdam aperiam voluptatum.
+                Join our Expense Tracker and take control of your finances! Create an account to start tracking your expenses, manage budgets, and gain insights into your spending habits. It's quick and easy—get started today!
               </p>
             </div>
             <SignUp />
