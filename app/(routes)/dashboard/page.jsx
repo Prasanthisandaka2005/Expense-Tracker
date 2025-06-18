@@ -10,6 +10,7 @@ import BudgetItem from '../dashboard//budgets/_components/BudgetItem'
 import ExpensesListTable from './expenses/_components/ExpensesListTable'
 import CreateBudget from './budgets/_components/CreateBudget'
 import Image from 'next/image'
+import { Loader } from 'lucide-react'
 
 function Dashboard() {
 
@@ -19,13 +20,13 @@ function Dashboard() {
     user && getBudgetList();
   }, [user])
 
-
+  const [loading, setLoading] = useState(true);
   const [budgetList, setBudgetList] = useState([])
   const [expensesList, setExpensesList] = useState([])
 
 
   const getBudgetList = async () => {
-
+    setLoading(true)
     const result = await db.select({
       ...getTableColumns(Budgets),
 
@@ -39,11 +40,8 @@ function Dashboard() {
       .orderBy(desc(Budgets.id))
     getAllExpenses()
     setBudgetList(result)
+    setLoading(false)
   }
-
-  useEffect(() => {
-    console.log(budgetList)
-  }, [getBudgetList])
 
   const getAllExpenses = async () => {
 
@@ -57,6 +55,14 @@ function Dashboard() {
     setExpensesList(result)
   }
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <Loader className="h-10 w-10 animate-spin text-blue-500" />
+      </div>
+    )
+  }
+
   return (
     <div className='p-8'>
       <h2 className='font-bold text-3xl'>Hey {user?.fullName} ✌</h2>
@@ -64,7 +70,7 @@ function Dashboard() {
         <>
           <p className='text-gray-500 mt-5'>Here's what happening with your money, Lets Magnage your expenses</p>
           <CardInfo budgetList={budgetList} />
-          <div className='grid grid-cols-1 md:grid-cols-3 mt-6 gap-5'>
+          <div className='grid grid-cols-1 md:grid-cols-3 mt-6 gap-5 items-start'>
             <div className='md:col-span-2'>
               <BarChartDashboard budgetList={budgetList} />
               <ExpensesListTable expensesList={expensesList} refreshData={() => getBudgetList()} />

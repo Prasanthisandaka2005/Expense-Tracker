@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
 
 function Hero() {
-  const { user, isSignedIn } = useUser();
+  const { isSignedIn } = useUser();
   const route = useRouter();
   useEffect(() => {
     if (isSignedIn) {

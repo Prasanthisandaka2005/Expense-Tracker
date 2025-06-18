@@ -4,9 +4,9 @@ import React from 'react'
 function DashboardHeader() {
   return (
     <div className='p-5 shadow-sm border-b flex justify-between items-center'>
-      <div>
+      <h1 className='text-lg'>
         Expense Tracker
-      </div>
+      </h1>
       <div>
         <UserButton />
       </div>

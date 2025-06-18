@@ -1,10 +1,12 @@
-import localFont from "next/font/local";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 
-const outfit = Outfit({ subsets: ["latin"] });
+const outfit = Outfit({ 
+  subsets: ["latin"],
+  display: 'swap',
+});
 
 export const metadata = {
   title: "Expense Tracker App",
